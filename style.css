@@ -1,0 +1,313 @@
+/* style.css - Estilos para o Prototipo Landing Page com Ghost Loading */
+
+/* Reset e Configurações Básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #eff1f5; 
+    overflow-x: hidden;
+}
+
+/* =========================================
+   Efeito Ghost Loading (Skeleton Screen) 
+========================================= */
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: #d1d5db !important; /* Cor base do esqueleto (cinza) */
+    color: transparent !important;
+    border-color: transparent !important;
+    pointer-events: none; /* Desativa cliques durante o loading */
+    user-select: none;
+}
+
+/* Esconde filhos, ícones e placeholders dentro dos skeletons */
+.skeleton * {
+    visibility: hidden !important;
+}
+.skeleton::placeholder {
+    color: transparent !important;
+}
+
+/* O brilho animado (Shimmer effect) */
+.skeleton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.4) 20%,
+        rgba(255, 255, 255, 0.4) 60%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    animation: shimmer 1.5s infinite;
+    z-index: 10;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Ajustes para manter a estrutura de textos que viraram skeletons (aumentados para novas fontes) */
+.brand-name.skeleton { border-radius: 6px; width: 130px; }
+.nav-links a.skeleton { border-radius: 4px; width: 60px; display: inline-block; }
+.account-text.skeleton { border-radius: 4px; width: 55px; display: inline-block; }
+
+
+/* --- Container Principal (Tela Inteira) --- */
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Cabeçalho (Header) --- */
+.header {
+    background-color: #e0e3e9;
+    padding: 12px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 15px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-circle, .account-circle {
+    width: 28px; /* Aumentado proporcionalmente à fonte */
+    height: 28px;
+    background-color: #000;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.brand-name {
+    font-weight: 600;
+    font-size: 24px; /* Aumentado */
+    color: #111;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: none; 
+    gap: 20px;
+    font-size: 18px; /* Aumentado */
+    font-weight: 500;
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: #000;
+}
+
+/* Barra de Busca */
+.search-bar {
+    background-color: #b9bec6;
+    padding: 10px 18px; /* Aumentado o respiro */
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%; 
+    order: 3; 
+}
+
+.search-icon {
+    font-size: 18px; /* Aumentado */
+    color: #333;
+}
+
+.search-input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    color: #333;
+    font-size: 16px; /* Aumentado */
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.account-text {
+    display: none; 
+    font-size: 18px; /* Aumentado */
+    font-weight: 500;
+    color: #111;
+}
+
+/* --- Área de Destaque (Hero) --- */
+.hero-section {
+    background-color: #aeb5bd;
+    height: 40vw; 
+    min-height: 200px;
+    max-height: 400px;
+    width: 100%;
+}
+
+/* --- Estrutura do Conteúdo Inferior --- */
+.main-content {
+    display: flex;
+    flex-direction: column; 
+    padding: 15px;
+    gap: 15px;
+    flex: 1;
+}
+
+/* Barra Lateral (Sidebar) */
+.sidebar {
+    width: 100%;
+    height: 80px; 
+    background-color: #ced3da;
+    border-radius: 8px;
+}
+
+/* Área de Feed / Cards */
+.feed-area {
+    width: 100%;
+    background-color: transparent; 
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Botão de Filtro */
+.filter-btn {
+    background-color: #ced3da;
+    border: none;
+    padding: 10px 24px; /* Aumentado */
+    border-radius: 25px;
+    font-size: 16px; /* Aumentado */
+    font-weight: bold;
+    color: #333;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: max-content;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.filter-btn:hover {
+    background-color: #b9bec6;
+}
+
+/* Cards */
+.card {
+    background-color: #e0e3e9;
+    border-radius: 12px;
+    padding: 15px;
+    height: auto; 
+    min-height: 220px;
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    gap: 15px;
+}
+
+.card-image-placeholder {
+    background-color: #aeb5bd;
+    width: 100%; 
+    height: 140px;
+    border-radius: 8px;
+}
+
+.card-content-placeholder {
+    background-color: #ced3da;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+}
+
+
+/* =========================================
+   Responsividade para Tablets e Desktop 
+========================================= */
+@media (min-width: 768px) {
+    .header {
+        padding: 15px 40px;
+        flex-wrap: nowrap; 
+        /* Trocamos de space-between para flex-start para controlar os blocos da direita */
+        justify-content: flex-start; 
+    }
+    .nav-links { display: flex; }
+    .account-text { display: block; }
+    
+    .search-bar {
+        order: 0; 
+        width: 320px;
+        flex: none;
+        /* margin-left: auto empurra este elemento (e os seguintes) tudo para a direita! */
+        margin-left: auto; 
+        margin-right: 20px; /* Espaço para ficar "colada" mas alinhada com a conta */
+    }
+
+    .main-content {
+        flex-direction: row; 
+        padding: 30px 40px;
+        gap: 30px;
+    }
+
+    .sidebar {
+        width: 25%;
+        min-height: 600px;
+        height: auto;
+        background-color: #ced3da;
+        border-radius: 12px;
+    }
+
+    .feed-area {
+        width: 75%;
+        background-color: #ced3da; 
+        border-radius: 12px;
+        padding: 30px;
+        gap: 20px;
+    }
+
+    .filter-btn { background-color: #eff1f5; }
+
+    .card {
+        background-color: #eff1f5;
+        flex-direction: row; 
+        height: 180px;
+        min-height: unset;
+    }
+
+    .card-image-placeholder {
+        width: 40%;
+        height: 100%;
+    }
+
+    .card-content-placeholder {
+        width: 60%;
+        height: 100%;
+        background-color: transparent;
+    }
+}
